@@ -71,7 +71,7 @@ AFRAME.registerComponent('extrude-svg', {
       data.steps !== oldData.steps ||
       data.bevelEnabled !== oldData.bevelEnabled
     ) {
-      el.getObject3D('mesh').geometry = this.geometry = extrudeShape(this.shape)
+      el.getObject3D('mesh').geometry = this.geometry = extrudeShape(this.shape, data);
     }
   },
 
