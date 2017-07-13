@@ -34,7 +34,6 @@
   "bugs": {
     "url": "https://github.com/johnrees/aframe-extrude-svg-component/issues"
   },
-  "homepage": "https://github.com/johnrees/aframe-extrude-svg-component#readme",
   "devDependencies": {
     "aframe": "*",
     "browserify": "^13.0.0",
