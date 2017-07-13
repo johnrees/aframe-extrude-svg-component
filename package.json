@@ -4,6 +4,7 @@
   "description": "An Extrude SVG component for A-Frame.",
   "main": "index.js",
   "cdn": "dist/aframe-extrude-svg-component.min.js",
+  "homepage": "https://johnrees.github.io/aframe-extrude-svg-component",
   "scripts": {
     "dev": "budo index.js:dist/aframe-extrude-svg-component.min.js --port 7000 --live --open",
     "dist": "webpack index.js dist/aframe-extrude-svg-component.js && webpack -p index.js dist/aframe-extrude-svg-component.min.js",
@@ -33,7 +34,6 @@
   "bugs": {
     "url": "https://github.com/johnrees/aframe-extrude-svg-component/issues"
   },
-  "homepage": "https://github.com/johnrees/aframe-extrude-svg-component#readme",
   "devDependencies": {
     "aframe": "*",
     "browserify": "^13.0.0",
