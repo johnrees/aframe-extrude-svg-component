@@ -4,7 +4,8 @@ if (typeof AFRAME === 'undefined') {
   throw new Error('Component attempted to register before AFRAME was available.');
 }
 
-const shapeFromPathString = require('./lib/shape_from_path_string');
+// const shapeFromPathString = require('./lib/shape_from_path_string');
+const transformSVGPath = require ('./lib/transform_svg_path')
 
 const extrudeShape = function(shape, data) {
   return new THREE.ExtrudeGeometry(
@@ -44,7 +45,7 @@ AFRAME.registerComponent('extrude-svg', {
     const data = this.data;
     const el = this.el;
 
-    this.shape = shapeFromPathString(data.path);
+    this.shape = transformSVGPath(data.path);
     this.geometry = extrudeShape(this.shape, data);
 
     this.mesh = new THREE.Mesh(this.geometry, this.material);
@@ -63,7 +64,7 @@ AFRAME.registerComponent('extrude-svg', {
     const el = this.el;
     // Geometry-related properties changed. Update the geometry.
     if (data.path !== oldData.path) {
-      this.shape = shapeFromPathString(data.path);
+      this.shape = transformSVGPath(data.path);
     }
     if (
       data.amount !== oldData.amount ||
