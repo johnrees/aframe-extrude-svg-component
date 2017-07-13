@@ -1,6 +1,6 @@
 {
   "name": "aframe-extrude-svg-component",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A Extrude SVG component for A-Frame.",
   "main": "index.js",
   "cdn": "dist/aframe-extrude-svg-component.min.js",
