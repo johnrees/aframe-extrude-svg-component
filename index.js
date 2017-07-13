@@ -29,7 +29,7 @@ AFRAME.registerComponent('extrude-svg', {
     bevelThickness: {type: 'number', default: 0.06}, // How deep into the original shape the bevel goes
     bevelSize: {type: 'number', default: 0.04 }, // Distance from the shape outline that the bevel extends. Default is bevelThickness - 0.02
     bevelSegments: {type: 'number', default: 3 }, // Number of bevel layers
-    curveSegments: { type: 'boolean', default: 12 }, // Number of points on the curves
+    curveSegments: { type: 'number', default: 12 }, // Number of points on the curves
     steps: { type: 'number', default: 1 }, // Number of points used for subdividing segments along the depth of the extruded spline
   },
 
@@ -62,16 +62,23 @@ AFRAME.registerComponent('extrude-svg', {
     if (Object.keys(oldData).length === 0) { return; }
     const data = this.data;
     const el = this.el;
+
+    var rebuild = false;
     // Geometry-related properties changed. Update the geometry.
     if (data.path !== oldData.path) {
       this.shape = transformSVGPath(data.path);
+      rebuild = true;
     }
     if (
       data.amount !== oldData.amount ||
       data.steps !== oldData.steps ||
       data.bevelEnabled !== oldData.bevelEnabled
     ) {
-      el.getObject3D('mesh').geometry = this.geometry = extrudeShape(this.shape)
+      rebuild = true;
+    }
+    if (rebuild) {
+      el.getObject3D('mesh').geometry.dispose()
+      el.getObject3D('mesh').geometry = this.geometry = extrudeShape(this.shape, data);
     }
   },
 
